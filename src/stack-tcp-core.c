@@ -612,6 +612,7 @@ tcpcon_set_parameter(struct TCP_ConnectionTable *tcpcon,
         x->hello = MALLOC(value_length);
         x->hello_length = base64_decode((char*)x->hello, value_length, value, value_length);
 
+	if (port == 0) for (; port < 65535; port++) banner1->payloads.tcp[port] = x;
         banner1->payloads.tcp[port] = x;
     }
 
